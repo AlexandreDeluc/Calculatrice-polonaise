@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class Constante : public Expression {
+class Constante : Expression {
 private:
     float _val;
 public:
@@ -18,13 +18,9 @@ public:
         _val = val;
     }
 
-   Constante(){
-        _val = 0;
-   }
-
     void afficher(ostream &os) override;
-    virtual void afficherNPI(ostream &os) override;
-    virtual float calculer() override;
+
+
 };
 
 

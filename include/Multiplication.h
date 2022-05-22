@@ -7,7 +7,6 @@
 
 
 #include "Operateur.h"
-#include "Constante.h"
 
 class Multiplication : public Operateur{
 public:
