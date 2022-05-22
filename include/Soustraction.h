@@ -7,6 +7,7 @@
 
 
 #include "Operateur.h"
+#include "Constante.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ public:
     void afficher(ostream &os) override;
     void afficherNPI(ostream &os) override;
     float calculer() override;
+
 };
 
 

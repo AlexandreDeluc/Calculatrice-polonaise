@@ -10,16 +10,16 @@
 
 using namespace std;
 
-class Constante : public Expression {
+class Variable : public Expression {
 private:
-    float _val;
+    char _val;
 public:
-    Constante(float val){
+    Variable(char val){
         _val = val;
     }
 
-   Constante(){
-        _val = 0;
+   Variable(){
+        _val = ' ';
    }
 
     void afficher(ostream &os) override;
