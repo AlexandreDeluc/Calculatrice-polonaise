@@ -10,16 +10,17 @@ Multiplication::Multiplication(Expression *oG, Expression *oD) : Operateur(oG, o
 
 void Multiplication::afficher(ostream &os) {
     getOpG()->afficher(os);
-    os << " + ";
+    os << " * ";
     getOpD()->afficher(os);
 }
 
 void Multiplication::afficherNPI(ostream &os) {
     getOpG()->afficher(os);
     getOpD()->afficher(os);
-    os << " + ";
+    os << " * ";
 }
 
 float Multiplication::calculer() {
     return getOpG()->calculer() * getOpD()->calculer();
 }
+

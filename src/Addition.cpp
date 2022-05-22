@@ -4,6 +4,7 @@
 
 #include "Addition.h"
 
+
 using namespace std;
 
 Addition::Addition(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
@@ -23,3 +24,4 @@ void Addition::afficherNPI(ostream &os) {
 float Addition::calculer() {
     return getOpG()->calculer() + getOpD()->calculer();
 }
+
