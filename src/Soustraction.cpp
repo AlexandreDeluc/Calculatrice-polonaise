@@ -1,31 +1,30 @@
-//
-// Created by yanoi on 10/05/2022.
-//
-
 #include "Soustraction.h"
 
-//
-// Created by yanoi on 10/05/2022.
-//
+Soustraction::Soustraction(Expression *oG, Expression *oD) : Operateur(oG, oD)
+{
+    //ctor
+}
 
-#include "Soustraction.h"
+Soustraction::~Soustraction()
+{
+    //dtor
+}
 
-using namespace std;
-
-Soustraction::Soustraction(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
-
-void Soustraction::afficher(ostream &os) {
+void Soustraction::afficher(ostream &os)
+{
     getOpG()->afficher(os);
-    os << " + ";
+    os << "-";
     getOpD()->afficher(os);
 }
 
-void Soustraction::afficherNPI(ostream &os) {
+void Soustraction::afficherNPI(ostream &os)
+{
     getOpG()->afficher(os);
     getOpD()->afficher(os);
-    os << " + ";
+    os << "-"
 }
 
-float Soustraction::calculer() {
+float Soustraction::calculer()
+{
     return getOpG()->calculer() - getOpD()->calculer();
 }
