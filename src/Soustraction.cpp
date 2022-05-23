@@ -1,31 +1,28 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#include <iostream>
 
-#include "Soustraction.h"
+#include "include/Soustraction.h"
+#include "include/variable.h"
 
-//
-// Created by yanoi on 10/05/2022.
-//
+Soustraction::Soustraction(Expression *gauche, Expression *droite) : Operation(gauche, droite) {}
 
-#include "Soustraction.h"
-
-using namespace std;
-
-Soustraction::Soustraction(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
-
-void Soustraction::afficher(ostream &os) {
-    getOpG()->afficher(os);
-    os << " + ";
-    getOpD()->afficher(os);
+std::string Soustraction::toString() const
+{
+    return "(" + getGauche()->toString() + "-" + getDroite()->toStringNpi() + ")";
 }
 
-void Soustraction::afficherNPI(ostream &os) {
-    getOpG()->afficher(os);
-    getOpD()->afficher(os);
-    os << " + ";
+std::string Soustraction::toStringNpi() const
+{
+    return "(" + getGauche()->toStringNpi() + " " + getDroite()->toStringNpi() + " -)";
 }
 
-float Soustraction::calculer() {
-    return getOpG()->calculer() - getOpD()->calculer();
+float Soustraction::calculer() const
+{
+    return getGauche()->calculer() - getDroite()->calculer();
+}
+
+Expression* Soustraction::simplifier() {
+    float a = getGauche()->calculer();
+    float b = getDroite()->calculer();
+
+    return new Soustraction(new Constante(a), new Constante(b));
 }

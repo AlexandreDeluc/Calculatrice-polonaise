@@ -1,20 +1,19 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#ifndef DIVISION_H
+#define DIVISION_H
 
-#ifndef EXPRESSION_DIVISION_H
-#define EXPRESSION_DIVISION_H
+#include "Operation.h"
+#include "variable.h"
 
+class Division: public Operation
+{
+    public:
+        Division(Expression *gauche, Expression *droite);
 
-#include "Operateur.h"
+        std::string toString() const;
+        std::string toStringNpi() const;
+        float calculer() const;
 
-class Division : public Operateur{
-public:
-    Division(Expression *oG, Expression *oD);
-    void afficher(ostream &os) override;
-    void afficherNPI(ostream &os) override;
-    float calculer() override;
+        Expression* simplifier() override;
 };
 
-
-#endif //EXPRESSION_DIVISION_H
+#endif // DIVISION_H

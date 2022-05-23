@@ -1,24 +1,39 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#include <iostream>
 
-#include "Division.h"
-using namespace std;
+#include "include/Division.h"
+#include "include/variable.h"
 
-Division::Division(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
+Division::Division(Expression *gauche, Expression *droite) : Operation(gauche, droite){}
 
-void Division::afficher(ostream &os) {
-    getOpG()->afficher(os);
-    os << " + ";
-    getOpD()->afficher(os);
+std::string Division::toString() const
+{
+    return getGauche()->toString() + "/" + getDroite()->toString();
 }
 
-void Division::afficherNPI(ostream &os) {
-    getOpG()->afficher(os);
-    getOpD()->afficher(os);
-    os << " + ";
+std::string Division::toStringNpi() const
+{
+    return getGauche()->toStringNpi() + " " + getDroite()->toStringNpi() + " /";
 }
 
-float Division::calculer() {
-    return getOpG()->calculer() / getOpD()->calculer();
+float Division::calculer() const
+{
+    return getGauche()->calculer() / getDroite()->calculer();
+}
+
+Expression* Division::simplifier() {
+    float a = getGauche()->calculer();
+    float b = getDroite()->calculer();
+
+    if(a == 0.0f && b == 0.0f){
+        return this;
+    }
+    else if(a == 0.0f){
+         return new Division(getGauche(), new Constante(b));
+
+    }
+    else if(b == 0.0f){
+        return new Division(new Constante(a), getDroite());
+    }
+
+    return new Division(new Constante(a), new Constante(b));
 }

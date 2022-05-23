@@ -1,20 +1,22 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#ifndef EXPRESSION_H
+#define EXPRESSION_H
 
-#ifndef EXPRESSION_EXPRESSION_H
-#define EXPRESSION_EXPRESSION_H
-
-
+#include <string>
 #include <iostream>
-using namespace std;
-class Expression {
-public:
-    virtual void afficher(ostream &os) = 0;
-    virtual void afficherNPI(ostream &os) = 0;
-    virtual float calculer() = 0;
 
+class Expression
+{
+    public:
+        virtual std::string toString() const = 0;
+        virtual std::string toStringNpi() const = 0;
+
+        virtual void afficher() const { std::cout << toString(); }
+        virtual void afficherNpi() const { std::cout << toStringNpi(); }
+        virtual float calculer() const = 0;
+
+        virtual Expression* simplifier(){return 0;}
+
+        virtual ~Expression(){}
 };
 
-
-#endif //EXPRESSION_EXPRESSION_H
+#endif // EXPRESSION_H

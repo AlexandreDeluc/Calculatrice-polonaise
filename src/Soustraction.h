@@ -1,22 +1,18 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#ifndef SOUSTRACTION_H
+#define SOUSTRACTION_H
 
-#ifndef EXPRESSION_SOUSTRACTION_H
-#define EXPRESSION_SOUSTRACTION_H
+#include "Operation.h"
 
+class Soustraction : public Operation
+{
+    public:
+        Soustraction(Expression *gauche, Expression *droite);
 
-#include "Operateur.h"
+        std::string toString() const;
+        std::string toStringNpi() const;
+        float calculer() const;
 
-using namespace std;
-
-class Soustraction : public Operateur{
-public:
-    Soustraction(Expression *oG, Expression *oD);
-    void afficher(ostream &os) override;
-    void afficherNPI(ostream &os) override;
-    float calculer() override;
+        Expression* simplifier() override;
 };
 
-
-#endif //EXPRESSION_SOUSTRACTION_H
+#endif // SOUSTRACTION_H

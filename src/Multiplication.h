@@ -1,20 +1,18 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#ifndef MULTIPLICATION_H
+#define MULTIPLICATION_H
 
-#ifndef EXPRESSION_MULTIPLICATION_H
-#define EXPRESSION_MULTIPLICATION_H
+#include "Operation.h"
 
+class Multiplication: public Operation
+{
+    public:
+        Multiplication(Expression *gauche, Expression *droite);
 
-#include "Operateur.h"
+        std::string toString() const;
+        std::string toStringNpi() const;
+        float calculer() const;
 
-class Multiplication : public Operateur{
-public:
-    Multiplication(Expression *oG, Expression *oD);
-    void afficher(ostream &os) override;
-    void afficherNPI(ostream &os) override;
-    float calculer() override;
+         Expression* simplifier() override;
 };
 
-
-#endif //EXPRESSION_MULTIPLICATION_H
+#endif // MULTIPLICATION_H

@@ -1,25 +1,28 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#include <iostream>
 
-#include "Multiplication.h"
+#include "include/Multiplication.h"
+#include "include/variable.h"
 
-using namespace std;
+Multiplication::Multiplication(Expression *gauche, Expression *droite) : Operation(gauche, droite){}
 
-Multiplication::Multiplication(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
-
-void Multiplication::afficher(ostream &os) {
-    getOpG()->afficher(os);
-    os << " + ";
-    getOpD()->afficher(os);
+std::string Multiplication::toString() const
+{
+    return getGauche()->toString() + "*" + getDroite()->toString();
 }
 
-void Multiplication::afficherNPI(ostream &os) {
-    getOpG()->afficher(os);
-    getOpD()->afficher(os);
-    os << " + ";
+std::string Multiplication::toStringNpi() const
+{
+    return getGauche()->toStringNpi() + " " + getDroite()->toStringNpi() + " *";
 }
 
-float Multiplication::calculer() {
-    return getOpG()->calculer() * getOpD()->calculer();
+float Multiplication::calculer() const
+{
+    return getGauche()->calculer() * getDroite()->calculer();
+}
+
+Expression* Multiplication::simplifier() {
+    float a = getGauche()->calculer();
+    float b = getDroite()->calculer();
+
+    return new Multiplication(new Constante(a), new Constante(b));
 }

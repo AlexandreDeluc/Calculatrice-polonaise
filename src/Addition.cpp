@@ -1,25 +1,27 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#include <iostream>
 
-#include "Addition.h"
+#include "include/Addition.h"
 
-using namespace std;
+Addition::Addition(Expression *gauche, Expression *droite) : Operation(gauche, droite){}
 
-Addition::Addition(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
-
-void Addition::afficher(ostream &os) {
-    getOpG()->afficher(os);
-    os << " + ";
-    getOpD()->afficher(os);
+std::string Addition::toString() const
+{
+    return "(" + getGauche()->toString() + "+" + getDroite()->toString() + ")";
 }
 
-void Addition::afficherNPI(ostream &os) {
-    getOpG()->afficher(os);
-    getOpD()->afficher(os);
-    os << " + ";
+std::string Addition::toStringNpi() const
+{
+    return "(" + getGauche()->toStringNpi() + " " + getDroite()->toStringNpi() + " +)";
 }
 
-float Addition::calculer() {
-    return getOpG()->calculer() + getOpD()->calculer();
+float Addition::calculer() const
+{
+    return getGauche()->calculer() + getDroite()->calculer();
+}
+
+Expression* Addition::simplifier() {
+    float a = getGauche()->calculer();
+    float b = getDroite()->calculer();
+
+    return new Addition(new Constante(a), new Constante(b));
 }

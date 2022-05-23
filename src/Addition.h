@@ -1,22 +1,19 @@
-//
-// Created by yanoi on 10/05/2022.
-//
+#ifndef ADDITION_H
+#define ADDITION_H
 
-#ifndef EXPRESSION_ADDITION_H
-#define EXPRESSION_ADDITION_H
+#include "Operation.h"
+#include "Constante.h"
 
+class Addition: public Operation
+{
+    public:
+        Addition(Expression *gauche, Expression *droite);
 
-#include "Operateur.h"
+        std::string toString() const;
+        std::string toStringNpi() const;
+        float calculer() const;
 
-using namespace std;
-
-class Addition : public Operateur {
-public:
-    Addition(Expression *oG, Expression *oD);
-    void afficher(ostream &os) override;
-    void afficherNPI(ostream &os) override;
-    float calculer() override;
+        Expression* simplifier() override;
 };
 
-
-#endif //EXPRESSION_ADDITION_H
+#endif // ADDITION_H
