@@ -1,31 +1,25 @@
+//
+// Created by yanoi on 10/05/2022.
+//
+
 #include "Multiplication.h"
 
-Multiplication::Multiplication(Expression *oG, Expression *oD0) : Operateur(oG, oD)
-{
-    //ctor
-}
+using namespace std;
 
-Multiplication::~Multiplication()
-{
-    //dtor
-}
+Multiplication::Multiplication(Expression *oG, Expression *oD) : Operateur(oG, oD) {}
 
-
-void Multiplication::afficher(ostream &os)
-{
+void Multiplication::afficher(ostream &os) {
     getOpG()->afficher(os);
-    os << "*";
+    os << " + ";
     getOpD()->afficher(os);
 }
 
-void Multiplication::afficherNPI(ostream &os)
-{
+void Multiplication::afficherNPI(ostream &os) {
     getOpG()->afficher(os);
     getOpD()->afficher(os);
-    os << "*";
+    os << " + ";
 }
 
-float Multiplication::calculer()
-{
+float Multiplication::calculer() {
     return getOpG()->calculer() * getOpD()->calculer();
 }
