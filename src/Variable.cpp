@@ -15,3 +15,7 @@ void Variable::afficherNPI(ostream &os) {
 float Variable::calculer(){
     return _val;
 }
+
+Expression* Variable::simplifier(){
+    return this;
+}

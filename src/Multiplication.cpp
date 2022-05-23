@@ -24,3 +24,10 @@ float Multiplication::calculer() {
     return getOpG()->calculer() * getOpD()->calculer();
 }
 
+Expression* Multiplication::simplifier() {
+    float a = getOpG()->calculer();
+    float b = getOpD()->calculer();
+
+    return new Multiplication(new Constante(a), new Constante(b));
+}
+

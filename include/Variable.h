@@ -25,6 +25,8 @@ public:
     void afficher(ostream &os) override;
     virtual void afficherNPI(ostream &os) override;
     virtual float calculer() override;
+
+    Expression* simplifier() override;
 };
 
 

@@ -25,3 +25,10 @@ float Addition::calculer() {
     return getOpG()->calculer() + getOpD()->calculer();
 }
 
+Expression* Addition::simplifier() {
+    float a = getOpG()->calculer();
+    float b = getOpD()->calculer();
+
+    return new Addition(new Constante(a), new Constante(b));
+}
+

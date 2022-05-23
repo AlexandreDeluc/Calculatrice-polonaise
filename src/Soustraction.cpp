@@ -26,3 +26,12 @@ float Soustraction::calculer() {
 }
 
 
+Expression* Soustraction::simplifier() {
+    float a = getOpG()->calculer();
+    float b = getOpD()->calculer();
+
+    return new Soustraction(new Constante(a), new Constante(b));
+}
+
+
+

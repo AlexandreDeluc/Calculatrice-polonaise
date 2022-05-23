@@ -18,6 +18,8 @@ public:
     void afficherNPI(ostream &os) override;
     float calculer() override;
 
+     Expression* simplifier() override;
+
 };
 
 

@@ -8,4 +8,7 @@ void Constante::afficher(ostream &os) {
     os << _val << " ";
 }
 
+Expression* Constante::simplifier(){
+    return this;
+}
 

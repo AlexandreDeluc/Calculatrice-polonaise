@@ -21,6 +21,8 @@ private:
 
 public:
     Operateur(Expression *_oG, Expression *_oD);
+     Expression* simplifier() {return 0;}
+     
 };
 
 

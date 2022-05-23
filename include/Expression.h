@@ -14,6 +14,8 @@ public:
     virtual void afficherNPI(ostream &os) = 0;
     virtual float calculer() = 0;
 
+     virtual Expression* simplifier(){return 0;}
+
 };
 
 
