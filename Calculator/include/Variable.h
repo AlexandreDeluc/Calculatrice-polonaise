@@ -10,11 +10,13 @@ class Variable : public Expression
 {
 	private:
 		char _symbol;
+		
 
 	public:
 		Variable(char symbol, float val);
 		virtual ~Variable();
 		void afficher(ostream& os);
-};
+		Variable * list[100];
+};	
 
 #endif // VARIABLE_H
