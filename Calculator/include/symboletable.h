@@ -15,7 +15,6 @@ class Symboletable : public Variable
         char find(char id);
         bool deleteRecord(char id);
         bool modify(char id, float val);
-
         Variable * list[100];
     private:
 };
