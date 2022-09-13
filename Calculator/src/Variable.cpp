@@ -5,7 +5,7 @@ using namespace std;
 Variable::Variable(char symbol, float val) : Expression(val)
 {
 	_symbol = symbol;
-    int next = NULL;
+     next = NULL;
 }
 
 Variable::~Variable() {}
